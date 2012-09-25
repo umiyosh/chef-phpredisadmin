@@ -17,18 +17,12 @@
 # limitations under the License.
 #
 
-bash "install_phpredisadmin" do
-  code <<-EOH
-  cd #{node.phpredisadmin.dir.cwd}
-  git clone #{node.phpredisadmin.git}
-  git submodule init #{node.phpredisadmin.dir.extracted}
-  git submodule update #{node.phpredisadmin.dir.extracted}
-  cp -R #{node.phpredisadmin.dir.extracted}/ #{node.phpredisadmin.dir.home}
-  git clone https://github.com/nrk/predis.git #{node.phpredisadmin.dir.home}/predis
-  chmod -R +r #{node.phpredisadmin.dir.home}
-  EOH
-  not_if "test -d #{node.phpredisadmin.dir.home}"
-  notifies :restart, resources(:service => "apache2")
+git "#{node.phpredisadmin.dir.home}" do
+  repository "#{node.phpredisadmin.git}"
+  enable_submodules true
+  reference "master"
+  action :checkout
+  notifies :restart, "service[apache2]"
 end
 
 template "#{node.phpredisadmin.dir.home}/config.inc.php" do
