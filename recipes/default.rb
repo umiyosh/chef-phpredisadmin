@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-git "#{node.phpredisadmin.dir.home}" do
+git "#{node.phpredisadmin.path.home}" do
   repository "#{node.phpredisadmin.git}"
   enable_submodules true
   reference "master"
@@ -25,7 +25,7 @@ git "#{node.phpredisadmin.dir.home}" do
   notifies :restart, "service[apache2]"
 end
 
-template "#{node.phpredisadmin.dir.home}/config.inc.php" do
+template "#{node.phpredisadmin.path.home}/config.inc.php" do
   source "config.inc.php.erb"
   mode "0664"
 end

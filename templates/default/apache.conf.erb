@@ -1,6 +1,6 @@
-Alias /phpredisadmin <%= node[:phpredisadmin][:dir][:home] %>
+Alias /phpredisadmin <%= node[:phpredisadmin][:path][:home] %>
 
-<Directory <%= node[:phpredisadmin][:dir][:home] %>>
+<Directory <%= node[:phpredisadmin][:path][:home] %>>
         Options Indexes FollowSymLinks
         DirectoryIndex index.php
 

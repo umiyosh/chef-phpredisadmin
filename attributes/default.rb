@@ -20,6 +20,4 @@
 
 default[:phpredisadmin][:git] = "https://github.com/ErikDubbelboer/phpRedisAdmin.git"
 
-default[:phpredisadmin][:dir][:cwd] = "/usr/local/src"
-default[:phpredisadmin][:dir][:home] = "/usr/share/phpRedisAdmin"
-default[:phpredisadmin][:dir][:extracted] = "#{phpredisadmin.dir.cwd}/phpRedisAdmin"
+default[:phpredisadmin][:path][:home] = "/usr/share/phpRedisAdmin"

@@ -12,9 +12,7 @@ Currently tested on Ubuntu 12.04.
 
 	['phpredisadmin']['git']					# "https://github.com/ErikDubbelboer/phpRedisAdmin.git"
 
-	['phpredisadmin']['dir']['cwd']				# "/usr/local/src"
-	['phpredisadmin']['dir']['home']			# "/usr/share/phpRedisAdmin"
-	['phpredisadmin']['dir']['extracted']		# "#{phpredisadmin.dir.cwd}/phpRedisAdmin"
+	['phpredisadmin']['path']['home']			# "/usr/share/phpRedisAdmin"
 
 # USAGE:
 
