@@ -17,12 +17,21 @@
 # limitations under the License.
 #
 
+
 git "#{node.phpredisadmin.path.home}" do
   repository "#{node.phpredisadmin.git}"
   enable_submodules true
   reference "master"
   action :checkout
-  notifies :restart, "service[apache2]"
+  notifies :restart, "service[httpd]"
+end
+
+git "#{node.phpredisadmin.path.home}/vendor" do
+  repository "https://github.com/nrk/predis.git"
+  enable_submodules true
+  reference "master"
+  action :checkout
+  notifies :restart, "service[httpd]"
 end
 
 template "#{node.phpredisadmin.path.home}/config.inc.php" do
@@ -30,8 +39,8 @@ template "#{node.phpredisadmin.path.home}/config.inc.php" do
   mode "0664"
 end
 
-template "/etc/apache2/sites-enabled/phpredisadmin.conf" do
+template "/etc/httpd/conf.d/phpredisadmin.conf" do
   source "apache.conf.erb"
   mode "0664"
-  notifies :restart, resources(:service => "apache2")
+  notifies :restart, "service[httpd]"
 end

@@ -19,5 +19,13 @@
 #
 
 default[:phpredisadmin][:git] = "https://github.com/ErikDubbelboer/phpRedisAdmin.git"
+default[:phpredisadmin][:predisRepo] = "https://github.com/nrk/predis.git"
 
-default[:phpredisadmin][:path][:home] = "/usr/share/phpRedisAdmin"
+default[:phpredisadmin][:path][:home]   = "/var/www/html/phpRedisAdmin"
+default[:phpredisadmin][:path][:vendor] = default[:phpredisadmin][:path][:home] + "/vendor"
+
+default[:phpredisadmin][:producHost] = "localhost"
+default[:phpredisadmin][:producPort] = 6379
+default[:phpredisadmin][:testHost]   = "localhost"
+default[:phpredisadmin][:testPort]   = 6380
+
